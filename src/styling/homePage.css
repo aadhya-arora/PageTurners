@@ -79,7 +79,8 @@ body {
   color: var(--cream);
 }
 .btn--primary:hover {
-  background: var(--dark-brown);
+  background: var(--cream);
+  color:var(--dark-brown);
   transform: translateY(-2px);
   box-shadow: var(--shadow-md);
 }
@@ -90,7 +91,9 @@ body {
   border: 1px solid rgba(245,240,232,0.45);
 }
 .btn--ghost:hover {
-  background: rgba(245,240,232,0.1);
+  background: var(--cream);
+  color: var(--brown);
+  border-color: var(--cream);
 }
 
 .btn--outline {

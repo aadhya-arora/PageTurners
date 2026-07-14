@@ -81,7 +81,7 @@ export default function HomePage() {
           PageTurners
         </div>
         <ul className={`navbar__links ${menuOpen ? "navbar__links--open" : ""}`}>
-          <li><a href="#">This Month</a></li>
+          <li><Link to="/clubs">Clubs</Link></li>
           <li><a href="#">Archive</a></li>
           <li><a href="#">Members</a></li>
           <li><a href="#">Discussions</a></li>
@@ -112,8 +112,8 @@ export default function HomePage() {
             a hundred conversations worth having.
           </p>
           <div className="hero__cta-group">
-            <button className="btn btn--primary">Join the Circle</button>
-            <button className="btn btn--ghost">See This Month's Pick →</button>
+            <button className="btn btn--primary">Explore Books →</button>
+            <Link to="/clubs" className="btn btn--ghost">Explore Clubs →</Link>
           </div>
         </div>
         <div className="hero__ornament">
