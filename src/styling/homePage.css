@@ -44,6 +44,20 @@ body {
 
 a { text-decoration: none; color: inherit; }
 
+/* ─── App Container ─────────────────────────────────────────── */
+.app {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  display: block;
+}
+
+body {
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+
 /* ─── Buttons ────────────────────────────────────────────────── */
 .btn {
   display: inline-flex;
@@ -105,6 +119,8 @@ a { text-decoration: none; color: inherit; }
   align-items: center;
   justify-content: space-between;
   padding: 20px 48px;
+  background: var(--soft-white);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
   transition: background var(--transition), box-shadow var(--transition);
 }
 
@@ -153,14 +169,52 @@ a { text-decoration: none; color: inherit; }
 }
 .navbar--scrolled .navbar__links a:hover { color: var(--cream); }
 
+.navbar__actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
 .navbar__join {
   background: var(--brown);
   color: var(--cream) !important;
   padding: 8px 20px;
   border-radius: var(--radius);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 .navbar__join:hover {
   background: var(--rust) !important;
+}
+
+.navbar__profile-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--cream);
+  color: var(--brown);
+  box-shadow: 0 2px 8px rgba(60, 35, 20, 0.14);
+  transition: transform var(--transition), background var(--transition);
+}
+
+.navbar__profile-link:hover {
+  transform: translateY(-1px);
+  background: var(--parchment);
+}
+
+.navbar__profile-icon {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  color: var(--brown);
 }
 
 .navbar__hamburger {

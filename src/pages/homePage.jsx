@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import "../styling/homePage.css";
 
 const featuredBook = {
@@ -84,18 +85,25 @@ export default function HomePage() {
           <li><a href="#">Archive</a></li>
           <li><a href="#">Members</a></li>
           <li><a href="#">Discussions</a></li>
-          <li><a href="#" className="navbar__join">Join Club</a></li>
+          <li className="navbar__actions">
+            <Link to="/signup" className="navbar__join">Join Club</Link>
+            <Link to="/profile" className="navbar__profile-link" aria-label="View profile">
+              <svg viewBox="0 0 24 24" className="navbar__profile-icon" aria-hidden="true">
+                <circle cx="12" cy="8" r="4" />
+                <path d="M5 19c1.5-3 4.2-4.5 7-4.5s5.5 1.5 7 4.5" />
+              </svg>
+            </Link>
+          </li>
         </ul>
         <button className="navbar__hamburger" onClick={() => setMenuOpen(!menuOpen)}>
           <span /><span /><span />
         </button>
       </nav>
 
-      {/* HERO */}
       <header className="hero">
         <div className="hero__texture" />
         <div className="hero__content">
-          <p className="hero__eyebrow">✦ June's Reading Circle ✦</p>
+          <p className="hero__eyebrow">✦ Your Reading Circle ✦</p>
           <h1 className="hero__title">
             Words that <em>gather</em><br />minds together
           </h1>

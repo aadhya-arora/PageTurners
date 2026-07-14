@@ -1,0 +1,261 @@
+:root {
+  color-scheme: dark;
+}
+
+body {
+  margin: 0;
+  font-family: "Inter", "Segoe UI", sans-serif;
+  background: #f6efe8;
+  color: #291d16;
+}
+
+.book-page {
+  min-height: 100vh;
+  padding: 24px;
+  background: linear-gradient(135deg, #fdf5ec 0%, #f0e3d6 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.book-page__backdrop {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at top right, rgba(122, 79, 58, 0.18), transparent 28%);
+  pointer-events: none;
+}
+
+.book-page__shell {
+  position: relative;
+  max-width: 1100px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(122, 79, 58, 0.12);
+  border-radius: 28px;
+  padding: 32px;
+  box-shadow: 0 20px 50px rgba(77, 48, 29, 0.14);
+}
+
+.book-page__hero {
+  display: grid;
+  grid-template-columns: minmax(220px, 280px) 1fr;
+  gap: 28px;
+  align-items: center;
+}
+
+.book-page__cover-column {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.book-page__cover {
+  min-height: 360px;
+  border-radius: 22px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 18px 36px rgba(77, 48, 29, 0.16);
+}
+
+.book-page__cover-spine {
+  width: 44px;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.18);
+  border-radius: 10px;
+}
+
+.book-page__cover-title {
+  color: white;
+  font-weight: 700;
+  font-size: 1.2rem;
+  line-height: 1.3;
+}
+
+.book-page__cover-title p {
+  margin: 0 0 6px;
+}
+
+.book-page__cover-title span {
+  font-size: 0.95rem;
+  opacity: 0.9;
+}
+
+.book-page__back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 12px;
+  color: #8a6247;
+  text-decoration: none;
+  font-weight: 700;
+  transition: color 0.2s ease;
+}
+
+.book-page__back-btn:hover {
+  color: #5e3a24;
+}
+
+.book-page__eyebrow {
+  margin: 0 0 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  font-size: 0.78rem;
+  color: #8a6247;
+  font-weight: 700;
+}
+
+.book-page__header-content h1 {
+  margin: 0 0 8px;
+  font-size: 2.2rem;
+  color: #2f231d;
+}
+
+.book-page__author {
+  margin: 0 0 12px;
+  font-size: 1.05rem;
+  color: #8a6247;
+  font-weight: 600;
+}
+
+.book-page__description {
+  margin: 0 0 20px;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #5e4637;
+}
+
+.book-page__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.meta-card {
+  background: #f7ebde;
+  border-radius: 14px;
+  padding: 12px 16px;
+  min-width: 110px;
+}
+
+.meta-card__label {
+  display: block;
+  font-size: 0.8rem;
+  color: #8a6247;
+  margin-bottom: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.book-page__content {
+  margin-top: 28px;
+  display: grid;
+  gap: 18px;
+}
+
+.book-page__section {
+  background: #fcf7f1;
+  border: 1px solid rgba(122, 79, 58, 0.1);
+  border-radius: 18px;
+  padding: 20px 22px;
+}
+
+.book-page__section h2 {
+  margin: 0 0 12px;
+  font-size: 1.1rem;
+  color: #2f231d;
+}
+
+.book-page__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.chip {
+  display: inline-block;
+  padding: 8px 12px;
+  background: #e7cdb2;
+  color: #5e3a24;
+  border-radius: 999px;
+  font-size: 0.92rem;
+}
+
+.book-page__list {
+  margin: 0;
+  padding-left: 18px;
+  color: #5e4637;
+  line-height: 1.8;
+}
+
+.book-page__reviews {
+  display: grid;
+  gap: 12px;
+}
+
+.review-card {
+  background: white;
+  padding: 14px 16px;
+  border-radius: 14px;
+  border: 1px solid rgba(122, 79, 58, 0.08);
+}
+
+.review-card__quote {
+  margin: 0 0 8px;
+  color: #3d2f24;
+}
+
+.review-card__author {
+  color: #8a6247;
+  font-weight: 600;
+}
+
+.book-page__similar {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+}
+
+.similar-card {
+  text-decoration: none;
+  color: inherit;
+  background: white;
+  border: 1px solid rgba(122, 79, 58, 0.08);
+  border-radius: 14px;
+  padding: 14px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.similar-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 18px rgba(77, 48, 29, 0.1);
+}
+
+.similar-card h3 {
+  margin: 0 0 6px;
+  color: #2f231d;
+  font-size: 1rem;
+}
+
+.similar-card p {
+  margin: 0;
+  color: #8a6247;
+}
+
+@media (max-width: 800px) {
+  .book-page {
+    padding: 14px;
+  }
+
+  .book-page__shell {
+    padding: 20px;
+  }
+
+  .book-page__hero {
+    grid-template-columns: 1fr;
+  }
+
+  .book-page__cover {
+    min-height: 280px;
+  }
+}
