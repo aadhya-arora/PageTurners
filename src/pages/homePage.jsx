@@ -82,9 +82,10 @@ export default function HomePage() {
         </div>
         <ul className={`navbar__links ${menuOpen ? "navbar__links--open" : ""}`}>
           <li><Link to="/clubs">Clubs</Link></li>
-          <li><a href="#">Archive</a></li>
-          <li><a href="#">Members</a></li>
-          <li><a href="#">Discussions</a></li>
+          <li><Link to="/archive">Archive</Link></li>
+          <li><Link to="/myclubs">My Clubs</Link></li>
+          <li><Link to='/library'>Library</Link></li>
+          <li><Link to="/discussions">Feed</Link></li>
           <li className="navbar__actions">
             <Link to="/signup" className="navbar__join">Join Club</Link>
             <Link to="/profile" className="navbar__profile-link" aria-label="View profile">
@@ -173,7 +174,7 @@ export default function HomePage() {
               </div>
             </div>
             <div className="featured__actions">
-              <button className="btn btn--primary">Join Discussion</button>
+              <Link to="/discussions" className="btn btn--primary">Join Discussion</Link>
               <button className="btn btn--outline">View Notes</button>
             </div>
           </div>

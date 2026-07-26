@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { clubs } from "../data/clubsData";
 import "../styling/clubDetailsPage.css";
@@ -5,6 +6,11 @@ import "../styling/clubDetailsPage.css";
 export default function ClubDetailsPage() {
   const { clubId } = useParams();
   const club = clubs.find((item) => item.id === Number(clubId)) ?? clubs[0];
+  const [joined, setJoined] = useState(false);
+
+const handleJoinClub = () => {
+  setJoined(true);
+};
 
   return (
     <div className="club-details-page">
@@ -45,9 +51,24 @@ export default function ClubDetailsPage() {
               </div>
             </div>
 
-            <Link to={`/book/${club.currentBook.bookId}`} className="club-details-page__book-btn">
-              Open book page
-            </Link>
+            <div className="club-details-page__actions">
+                <button
+                  className={`club-details-page__join-btn ${
+                    joined ? "club-details-page__join-btn--joined" : ""
+                  }`}
+                  onClick={handleJoinClub}
+                  disabled={joined}
+                >
+                  {joined ? "✓ Joined" : "Join This Club"}
+                </button>
+
+                <Link
+                  to={`/book/${club.currentBook.bookId}`}
+                  className="club-details-page__book-btn"
+                >
+                  Open Book Page
+                </Link>
+            </div>
           </div>
         </header>
 

@@ -5,6 +5,10 @@ import UserProfile from "./pages/userProfile";
 import BookPage from "./pages/bookPage";
 import ClubsPage from "./pages/clubsPage";
 import ClubDetailsPage from "./pages/clubDetailsPage";
+import DiscussionPage from "./pages/discussionPage";
+import BooksLibrary from './pages/bookLibrary';
+import ArchivePage from './pages/archivePage';
+import MyClubs from './pages/myClubs';
 
 function App() {
   return (
@@ -16,6 +20,11 @@ function App() {
         <Route path="/book/:bookId" element={<BookPage />} />
         <Route path="/clubs" element={<ClubsPage />} />
         <Route path="/clubs/:clubId" element={<ClubDetailsPage />} />
+        <Route path="/discussions" element={<DiscussionPage />} />
+        <Route path="/discussion/:discussionId" element={<DiscussionPage />} />
+        <Route path="/library" element={<BooksLibrary />} />
+        <Route path="/archive" element={<ArchivePage />} />
+        <Route path="/myclubs" element={<MyClubs />} />
       </Routes>
     </BrowserRouter>
   );

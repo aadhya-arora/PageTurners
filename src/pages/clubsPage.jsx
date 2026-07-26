@@ -95,7 +95,7 @@ export default function ClubsPage() {
 
               <div className="club-card__footer">
                 <p>
-                  <strong>Next meetup:</strong> {club.nextMeetup}
+                  <strong>Meetups On:</strong><br/> {club.nextMeetup}
                 </p>
                 <p>
                   <strong>Focus:</strong> {club.focus}
