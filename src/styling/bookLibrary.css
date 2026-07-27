@@ -84,7 +84,7 @@
     padding:12px 16px;
     border-radius:999px;
     text-decoration:none;
-    font:400 .78rem 'DM Mono',monospace;
+    font:400 .7rem 'DM Mono',monospace;
     letter-spacing:.08em;
     text-transform:uppercase;
     transition:var(--transition)

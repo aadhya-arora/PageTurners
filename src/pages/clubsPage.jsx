@@ -1,17 +1,20 @@
 import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-import { clubs } from "../data/clubsData";
+import { clubs as initialClubs } from "../data/clubsData";
+import CreateClubModal from "./CreateClubModal";
 import "../styling/clubsPage.css";
 
 export default function ClubsPage() {
   const [query, setQuery] = useState("");
+  const [clubList, setClubList] = useState(initialClubs);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const filteredClubs = useMemo(() => {
     const searchValue = query.trim().toLowerCase();
 
-    if (!searchValue) return clubs;
+    if (!searchValue) return clubList;
 
-    return clubs.filter((club) => {
+    return clubList.filter((club) => {
       const searchableText = [
         club.name,
         club.currentBook.title,
@@ -24,18 +27,26 @@ export default function ClubsPage() {
 
       return searchableText.includes(searchValue);
     });
-  }, [query]);
+  }, [query, clubList]);
+
+  const handleCreateClub = (newClub) => {
+    setClubList((prev) => [newClub, ...prev]);
+  };
 
   return (
     <div className="clubs-page">
       <nav className="clubs-page__topbar">
-        <Link to="/" className="clubs-page__back">← Back to home</Link>
+        <Link to="/" className="bl-back-btn">← Back to home</Link>
         <div className="clubs-page__headline-wrap">
           <div className="clubs-page__headline">
             <h1>Available clubs</h1>
             <p>Search by book title, author, genre, or ISBN.</p>
           </div>
-          <button type="button" className="clubs-page__create-btn">
+          <button
+            type="button"
+            className="clubs-page__create-btn"
+            onClick={() => setIsModalOpen(true)}
+          >
             Create your own club
           </button>
         </div>
@@ -84,10 +95,6 @@ export default function ClubsPage() {
                   <strong>{club.currentBook.author}</strong>
                 </div>
                 <div>
-                  <span className="club-card__label">Genre</span>
-                  <strong>{club.currentBook.genre}</strong>
-                </div>
-                <div>
                   <span className="club-card__label">ISBN</span>
                   <strong>{club.currentBook.isbn}</strong>
                 </div>
@@ -98,8 +105,13 @@ export default function ClubsPage() {
                   <strong>Meetups On:</strong><br/> {club.nextMeetup}
                 </p>
                 <p>
-                  <strong>Focus:</strong> {club.focus}
+                  <strong>Genre:</strong> {club.currentBook.genre}
                 </p>
+                {club.location && (
+                  <p>
+                    <strong>Location:</strong> {club.location}
+                  </p>
+                )}
               </div>
             </article>
           ))
@@ -110,6 +122,12 @@ export default function ClubsPage() {
           </div>
         )}
       </section>
+
+      <CreateClubModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        onCreate={handleCreateClub}
+      />
     </div>
   );
 }

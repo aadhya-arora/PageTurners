@@ -12,10 +12,10 @@ const GIF_REACTIONS = [
 
 const AVATAR_COLORS = ["#c49a72", "#8faa8b", "#b07d62", "#9b8ea0"];
 
-let idCounter = 100;
+let idcounter = 100;
 function nextId() {
-  idCounter += 1;
-  return idCounter;
+  idcounter += 1;
+  return idcounter;
 }
 
 function initialsOf(name) {
@@ -285,14 +285,14 @@ function PostComposer({ onSubmit, onCancel }) {
 
 /* ── Comments ────────────────────────────────────────────────── */
 
-function CommentThread({ comment, depth, onAddComment, onLikeComment }) {
+function CommentThread({ comment, depth, onAddcomment, onLikeComment }) {
   const [replyOpen, setReplyOpen] = useState(false);
   const [replyValue, setReplyValue] = useState("");
   const [revealed, setRevealed] = useState(false);
 
   function submitReply() {
     if (!replyValue.trim()) return;
-    onAddComment(comment.id, replyValue.trim(), false);
+    onAddcomment(comment.id, replyValue.trim(), false);
     setReplyValue("");
     setReplyOpen(false);
   }
@@ -351,7 +351,7 @@ function CommentThread({ comment, depth, onAddComment, onLikeComment }) {
       {comment.replies.length > 0 && (
         <div className="dc-comment__replies">
           {comment.replies.map((r) => (
-            <CommentThread key={r.id} comment={r} depth={depth + 1} onAddComment={onAddComment} onLikeComment={onLikeComment} />
+            <CommentThread key={r.id} comment={r} depth={depth + 1} onAddcomment={onAddcomment} onLikeComment={onLikeComment} />
           ))}
         </div>
       )}
@@ -359,13 +359,13 @@ function CommentThread({ comment, depth, onAddComment, onLikeComment }) {
   );
 }
 
-function CommentSection({ comments, onAddComment, onLikeComment }) {
+function CommentSection({ comments, onAddcomment, onLikeComment }) {
   const [value, setValue] = useState("");
   const [spoiler, setSpoiler] = useState(false);
 
   function submit() {
     if (!value.trim()) return;
-    onAddComment(null, value.trim(), spoiler);
+    onAddcomment(null, value.trim(), spoiler);
     setValue("");
     setSpoiler(false);
   }
@@ -397,7 +397,7 @@ function CommentSection({ comments, onAddComment, onLikeComment }) {
 
       <div className="dc-comment-list">
         {comments.map((c) => (
-          <CommentThread key={c.id} comment={c} depth={0} onAddComment={onAddComment} onLikeComment={onLikeComment} />
+          <CommentThread key={c.id} comment={c} depth={0} onAddcomment={onAddcomment} onLikeComment={onLikeComment} />
         ))}
       </div>
     </div>
@@ -406,7 +406,7 @@ function CommentSection({ comments, onAddComment, onLikeComment }) {
 
 /* ── Post card ───────────────────────────────────────────────── */
 
-function PostCard({ post, expanded, onToggleExpand, onLike, onBookmark, onShare, onAddComment, onLikeComment }) {
+function PostCard({ post, expanded, onToggleExpand, onLike, onBookmark, onShare, onAddcomment, onLikeComment }) {
   const [spoilerRevealed, setSpoilerRevealed] = useState(false);
   const [quickComment, setQuickComment] = useState("");
   const totalComments = countComments(post.comments);
@@ -414,7 +414,7 @@ function PostCard({ post, expanded, onToggleExpand, onLike, onBookmark, onShare,
 
   function submitQuickComment() {
     if (!quickComment.trim()) return;
-    onAddComment(null, quickComment.trim(), false);
+    onAddcomment(null, quickComment.trim(), false);
     setQuickComment("");
     if (!expanded) onToggleExpand();
   }
@@ -498,7 +498,7 @@ function PostCard({ post, expanded, onToggleExpand, onLike, onBookmark, onShare,
         </div>
       )}
 
-      {expanded && <CommentSection comments={post.comments} onAddComment={onAddComment} onLikeComment={onLikeComment} />}
+      {expanded && <CommentSection comments={post.comments} onAddcomment={onAddcomment} onLikeComment={onLikeComment} />}
     </article>
   );
 }
@@ -549,7 +549,7 @@ export default function DiscussionPage() {
     showToast("Discussion posted");
   }
 
-  function addComment(postId, parentId, content, spoiler) {
+  function addcomment(postId, parentId, content, spoiler) {
     setPosts((prev) =>
       prev.map((p) => {
         if (p.id !== postId) return p;
@@ -644,7 +644,7 @@ export default function DiscussionPage() {
               onLike={() => toggleLikePost(post.id)}
               onBookmark={() => toggleBookmark(post.id)}
               onShare={() => handleShare(post)}
-              onAddComment={(parentId, content, spoiler) => addComment(post.id, parentId, content, spoiler)}
+              onAddcomment={(parentId, content, spoiler) => addcomment(post.id, parentId, content, spoiler)}
               onLikeComment={(commentId) => toggleLikeComment(post.id, commentId)}
             />
           ))}

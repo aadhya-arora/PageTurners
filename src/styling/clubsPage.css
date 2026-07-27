@@ -23,18 +23,7 @@
   margin-bottom: 24px;
 }
 
-.clubs-page__back {
-  color: var(--brown);
-  font-weight: 600;
-  padding: 8px 12px;
-  border-radius: 999px;
-  transition: background-color 0.35s cubic-bezier(0.22, 0.61, 0.36, 1), color 0.35s cubic-bezier(0.22, 0.61, 0.36, 1);
-}
 
-.clubs-page__back:hover {
-  background-color: var(--dark-brown);
-  color: var(--cream);
-}
 
 .clubs-page__headline-wrap {
   display: flex;
@@ -139,9 +128,8 @@
 
 .clubs-page__list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 24px;
-  justify-items: center;
 }
 .club-card {
   position: relative;
@@ -152,7 +140,6 @@
 
   aspect-ratio: 1 / 1;   /* Makes height = width */
   width: 100%;
-  max-width: 420px;      /* Adjust as desired */
 
   padding: 24px;
   box-sizing: border-box;
@@ -225,7 +212,7 @@
 
 .club-card__meta {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 12px;
   margin-bottom: 14px;
 }
@@ -256,6 +243,10 @@
 }
 
 @media (max-width: 900px) {
+  .clubs-page__list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .club-card__meta {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -283,6 +274,10 @@
     grid-template-columns: 1fr;
   }
 
+  .clubs-page__list {
+    grid-template-columns: 1fr;
+  }
+
   .clubs-page__search-row {
     flex-direction: column;
     align-items: stretch;
@@ -290,5 +285,256 @@
 
   .clubs-page__hint {
     white-space: normal;
+  }
+}
+
+/* ============================
+   Create Club Modal
+   ============================ */
+
+.club-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(28, 18, 9, 0.55);
+  backdrop-filter: blur(2px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  z-index: 1000;
+  animation: club-modal-fade 0.25s ease-out;
+}
+
+@keyframes club-modal-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.club-modal {
+  position: relative;
+  width: 100%;
+  max-width: 560px;
+  max-height: 90vh;
+  overflow-y: auto;
+  background: linear-gradient(180deg, var(--parchment) 0%, var(--cream) 100%);
+  border: 1px solid rgba(122, 79, 58, 0.2);
+  border-radius: 24px;
+  padding: 36px 36px 28px;
+  box-shadow: 0 30px 60px rgba(28, 18, 9, 0.35);
+  animation: club-modal-rise 0.3s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+@keyframes club-modal-rise {
+  from { opacity: 0; transform: translateY(16px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.club-modal__close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1px solid rgba(122, 79, 58, 0.25);
+  background: rgba(255, 253, 247, 0.8);
+  color: var(--brown);
+  font-size: 1.3rem;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.club-modal__close:hover {
+  background: var(--brown);
+  color: var(--cream);
+  transform: rotate(90deg);
+}
+
+.club-modal__eyebrow {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--rust);
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.club-modal__title {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 2rem;
+  color: var(--ink);
+  margin-bottom: 6px;
+}
+
+.club-modal__subtitle {
+  color: #6c5b4c;
+  margin-bottom: 24px;
+  font-size: 0.96rem;
+}
+
+.club-modal__form {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.club-modal__section {
+  padding-top: 18px;
+  border-top: 1px solid rgba(122, 79, 58, 0.15);
+}
+
+.club-modal__section:first-child {
+  padding-top: 0;
+  border-top: none;
+}
+
+.club-modal__section-label {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--brown);
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.club-modal__section-label span {
+  text-transform: none;
+  letter-spacing: normal;
+  font-weight: 400;
+  color: #8a7867;
+}
+
+.club-modal__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.club-modal__field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.club-modal__field label {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #6c5b4c;
+  font-weight: 600;
+}
+
+.club-modal__field input,
+.club-modal__field textarea {
+  width: 100%;
+  border: 1px solid rgba(122, 79, 58, 0.25);
+  background: rgba(255, 253, 247, 0.95);
+  border-radius: 12px;
+  padding: 11px 14px;
+  font-size: 0.96rem;
+  font-family: inherit;
+  color: var(--ink);
+  box-sizing: border-box;
+  resize: vertical;
+}
+
+.club-modal__field input:focus,
+.club-modal__field textarea:focus {
+  outline: none;
+  border-color: var(--brown);
+  box-shadow: 0 0 0 3px rgba(122, 79, 58, 0.15);
+}
+
+.club-modal__toggle {
+  display: inline-flex;
+  background: rgba(122, 79, 58, 0.1);
+  border-radius: 999px;
+  padding: 4px;
+  gap: 4px;
+  margin-bottom: 14px;
+}
+
+.club-modal__toggle-btn {
+  border: none;
+  background: transparent;
+  color: var(--brown);
+  padding: 8px 18px;
+  border-radius: 999px;
+  font-family: inherit;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.club-modal__toggle-btn.is-active {
+  background: var(--brown);
+  color: var(--cream);
+}
+
+.club-modal__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  padding-top: 6px;
+}
+
+.club-modal__cancel {
+  border: 1px solid rgba(122, 79, 58, 0.3);
+  background: transparent;
+  color: var(--brown);
+  padding: 11px 20px;
+  border-radius: 999px;
+  font-family: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.club-modal__cancel:hover {
+  background: rgba(122, 79, 58, 0.08);
+}
+
+.club-modal__submit {
+  border: none;
+  background: var(--rust);
+  color: var(--cream);
+  padding: 11px 22px;
+  border-radius: 999px;
+  font-family: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.club-modal__submit:hover {
+  background: var(--dark-brown);
+  transform: translateY(-1px);
+}
+
+@media (max-width: 640px) {
+  .club-modal {
+    padding: 28px 22px 22px;
+    border-radius: 18px;
+  }
+
+  .club-modal__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .club-modal__title {
+    font-size: 1.6rem;
+  }
+
+  .club-modal__actions {
+    flex-direction: column-reverse;
+  }
+
+  .club-modal__actions button {
+    width: 100%;
   }
 }

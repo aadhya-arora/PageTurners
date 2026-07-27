@@ -203,7 +203,7 @@ export default function BooksLibrary() {
                 {book.description}
               </p>
 
-              <div className="bl-club">
+              {/* <div className="bl-club">
 
                 <strong>{book.club}</strong>
 
@@ -211,7 +211,7 @@ export default function BooksLibrary() {
                   {book.members} members
                 </span>
 
-              </div>
+              </div> */}
 
               <div className="bl-buttons">
 
@@ -231,10 +231,10 @@ export default function BooksLibrary() {
                 </button>
 
                 <Link
-                  to={`/clubs/${book.clubId}`}
+                  to={`/clubs`}
                   className="bl-explore"
                 >
-                  Explore Club
+                  Explore Clubs
                 </Link>
 
               </div>

@@ -46,6 +46,9 @@ const joinedClubs = [
 export default function MyClubs() {
   return (
     <div className="mc-page">
+      <Link to="/" className="mc-home-btn">
+                ← Back to Home
+            </Link>
       <section className="mc-section">
         
         <div className="mc-eyebrow">
@@ -60,9 +63,6 @@ export default function MyClubs() {
               you've joined.
             </p>
 
-            <Link to="/" className="mc-home-btn">
-                ← Back to Home
-            </Link>
           </div>
 
           <div className="mc-count">
@@ -100,9 +100,9 @@ export default function MyClubs() {
                     </span>
                   </div>
 
-                  <button className="mc-btn mc-btn--primary">
-                    Open Club
-                  </button>
+                 <Link to="/chat" className="mc-btn mc-btn--primary">
+                   Join Discussion
+                 </Link>
                 </div>
 
                 <div className="mc-info">

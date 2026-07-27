@@ -162,7 +162,7 @@ export default function ArchivePage() {
 
     <div className="ar-page">
 
-      <Link to="/" className="ar-back">
+      <Link to="/" className="bl-back-btn">
         ← Back to Home
       </Link>
 

@@ -113,7 +113,7 @@ export default function HomePage() {
             a hundred conversations worth having.
           </p>
           <div className="hero__cta-group">
-            <button className="btn btn--primary">Explore Books →</button>
+            <Link to="/library" className="btn btn--primary">Explore Books →</Link>
             <Link to="/clubs" className="btn btn--ghost">Explore Clubs →</Link>
           </div>
         </div>

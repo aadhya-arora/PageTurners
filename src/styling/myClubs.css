@@ -56,7 +56,7 @@
   display: flex;
   align-items: center;
   gap: 10px;
-
+  margin-top: -55px;
   font-family: var(--font-mono);
   font-size: .72rem;
   letter-spacing: .18em;
@@ -351,29 +351,31 @@
 }
 
 .mc-page .mc-home-btn{
-    display:inline-flex;
-    align-items:center;
-
-    padding:10px 18px;
-
-    border-radius:999px;
-
-    border:1px solid var(--warm-tan);
-
-    margin-top:25px;
-
-    text-decoration:none;
-
-    color:var(--brown);
-
-    transition:.3s;
-
-    font-family:var(--font-mono);
+     display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  margin-bottom: 30px;
+  border-radius: 999px;
+  background: #ffffff;
+  border: 1.5px solid var(--warm-tan);
+  color: var(--brown);
+  text-decoration: none;
+  font-family: "DM Mono", monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: var(--transition);
+  box-shadow: var(--shadow-sm);
+  margin-top: 20px;
+  margin-left: 20px;
 }
 
 .mc-page .mc-home-btn:hover{
-    background:var(--brown);
-    color:white;
+     background: var(--brown);
+  color: var(--cream);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
 }
 
 .mc-page .mc-info-item span{

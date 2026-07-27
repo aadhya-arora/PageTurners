@@ -9,6 +9,7 @@ import DiscussionPage from "./pages/discussionPage";
 import BooksLibrary from './pages/bookLibrary';
 import ArchivePage from './pages/archivePage';
 import MyClubs from './pages/myClubs';
+import ChatPage from './pages/chatPage';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         <Route path="/library" element={<BooksLibrary />} />
         <Route path="/archive" element={<ArchivePage />} />
         <Route path="/myclubs" element={<MyClubs />} />
+        <Route path="/chat" element={<ChatPage />} />
       </Routes>
     </BrowserRouter>
   );

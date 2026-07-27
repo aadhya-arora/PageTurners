@@ -189,23 +189,7 @@ color:black;
     background:var(--sage);
 }
 .empty{padding:20px;color:#777}
-.ar-back{
-display:inline-flex;
-align-items:center;
-padding:10px 18px;
-border-radius:999px;
-border:1px solid var(--tan);
-margin-bottom:25px;
-text-decoration:none;
-color:var(--brown);
-transition:.3s;
-font-family:"DM Mono",monospace;
-}
 
-.ar-back:hover{
-background:var(--brown);
-color:white;
-}
 
 .ar-author{
 font-weight:600;
