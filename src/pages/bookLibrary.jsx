@@ -203,16 +203,6 @@ export default function BooksLibrary() {
                 {book.description}
               </p>
 
-              {/* <div className="bl-club">
-
-                <strong>{book.club}</strong>
-
-                <span>
-                  {book.members} members
-                </span>
-
-              </div> */}
-
               <div className="bl-buttons">
 
                 <button

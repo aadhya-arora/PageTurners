@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import "../styling/discussionPage.css";
 /* ── Static data ─────────────────────────────────────────────── */
 
@@ -104,7 +104,7 @@ function PostComposer({ onSubmit, onCancel }) {
   const editorRef = useRef(null);
   const fileInputRef = useRef(null);
   const [title, setTitle] = useState("");
-  const [bookTag, setBookTag] = useState("General");
+  const [bookTag, setBookTag] = useState("");
   const [spoiler, setSpoiler] = useState(false);
   const [image, setImage] = useState(null);
   const [gif, setGif] = useState(null);
@@ -151,7 +151,7 @@ function PostComposer({ onSubmit, onCancel }) {
       comments: [],
     });
     setTitle("");
-    setBookTag("General");
+    setBookTag("");
     setSpoiler(false);
     setImage(null);
     setGif(null);
@@ -175,17 +175,10 @@ function PostComposer({ onSubmit, onCancel }) {
           <label className="dc-field__label">Book</label>
           <input
             className="dc-field__input"
-            list="dc-book-suggestions"
             value={bookTag}
             onChange={(e) => setBookTag(e.target.value)}
             placeholder="Type a book title..."
           />
-          <datalist id="dc-book-suggestions">
-            <option value="Piranesi" />
-            <option value="The Vaster Wilds" />
-            <option value="Circe" />
-            <option value="General" />
-          </datalist>
         </div>
         <label className="dc-spoiler-toggle">
           <input type="checkbox" checked={spoiler} onChange={(e) => setSpoiler(e.target.checked)} />
@@ -503,6 +496,34 @@ function PostCard({ post, expanded, onToggleExpand, onLike, onBookmark, onShare,
   );
 }
 
+/* ── Composer Modal ──────────────────────────────────────────── */
+
+function PostComposerModal({ onSubmit, onClose }) {
+  useEffect(() => {
+    function handleKeyDown(e) {
+      if (e.key === "Escape") onClose();
+    }
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [onClose]);
+
+  return (
+    <div className="dc-modal-overlay" onMouseDown={(e) => e.target === e.currentTarget && onClose()}>
+      <div className="dc-modal-box" role="dialog" aria-modal="true" aria-label="Create post">
+        <div className="dc-modal-box__header">
+          <h2>New Discussion</h2>
+          <button type="button" className="dc-modal-box__close" onClick={onClose} aria-label="Close">
+            ✕
+          </button>
+        </div>
+        <div className="dc-modal-box__body">
+          <PostComposer onSubmit={onSubmit} onCancel={onClose} />
+        </div>
+      </div>
+    </div>
+  );
+}
+
 /* ── Page ────────────────────────────────────────────────────── */
 
 export default function DiscussionPage() {
@@ -604,8 +625,8 @@ export default function DiscussionPage() {
           </div>
           <div className="dc-header__row">
             <h1>Share your thoughts</h1>
-            <button className="dc-btn dc-btn--primary" onClick={() => setComposerOpen((o) => !o)}>
-              {composerOpen ? "Cancel" : "+ Create Post"}
+            <button className="dc-btn dc-btn--primary" onClick={() => setComposerOpen(true)}>
+              + Create Post
             </button>
           </div>
           <p className="dc-header__sub">Thoughts, theories, and spoiler-tagged rants from the shelf.</p>
@@ -625,8 +646,6 @@ export default function DiscussionPage() {
             )}
           </div>
         </header>
-
-        {composerOpen && <PostComposer onSubmit={addPost} onCancel={() => setComposerOpen(false)} />}
 
         {visiblePosts.length === 0 ? (
           <div className="dc-empty">
@@ -651,6 +670,8 @@ export default function DiscussionPage() {
         </div>
         )}
       </div>
+
+      {composerOpen && <PostComposerModal onSubmit={addPost} onClose={() => setComposerOpen(false)} />}
 
       {toast && <div className="dc-toast">{toast}</div>}
     </div>

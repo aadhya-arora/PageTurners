@@ -341,6 +341,7 @@
   color: var(--brown);
   font-size: 1.3rem;
   line-height: 1;
+  text-decoration: none;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -351,7 +352,6 @@
 .club-modal__close:hover {
   background: var(--brown);
   color: var(--cream);
-  transform: rotate(90deg);
 }
 
 .club-modal__eyebrow {

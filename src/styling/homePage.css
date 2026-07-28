@@ -82,7 +82,7 @@ body {
   color:var(--dark-brown);
   transform: translateY(-2px);
   box-shadow: var(--shadow-md);
-  border-color:var(--brown);
+  border:2px solid var(--brown);
 }
 
 .btn--ghost {

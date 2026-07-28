@@ -43,7 +43,17 @@ const initialBooks = [
     status: "currently",
     favorite: true,
     clubId: 4
-  }
+  },
+  {
+  id: 5,
+  title: "Harry Potter",
+  author: "JK Rowling",
+  genre: "Fictional",
+  rating: "★★★★★",
+  status: "revisiting",
+  favorite: true,
+  clubId: 5
+}
 ];
 
 export default function ArchivePage() {
@@ -72,6 +82,7 @@ export default function ArchivePage() {
 
   const sections = useMemo(() => ({
     currently: books.filter(book => book.status === "currently"),
+    revisiting: books.filter(book => book.status === "revisiting"),
     want: books.filter(book => book.status === "want"),
     read: books.filter(book => book.status === "read"),
     favorite: books.filter(book => book.favorite)
@@ -84,10 +95,11 @@ export default function ArchivePage() {
       <div className="ar-book-cover">
 
         <div className={`ar-ribbon ${book.status}`}>
-          {book.status === "currently" && "📖"}
-          {book.status === "want" && "📚"}
-          {book.status === "read" && "✔"}
-        </div>
+  {book.status === "currently" && "📖"}
+  {book.status === "revisiting" && "🔄"}
+  {book.status === "want" && "📚"}
+  {book.status === "read" && "✔"}
+</div>
 
       </div>
 
@@ -123,6 +135,15 @@ export default function ArchivePage() {
               >
                 📖 Currently Reading
               </button>
+
+              <button
+  onClick={() => {
+    updateStatus(book.id, "revisiting");
+    setOpenMenu(null);
+  }}
+>
+  🔄 Revisiting
+</button>
 
               <button
                 onClick={() => {
@@ -193,11 +214,12 @@ export default function ArchivePage() {
       </div>
 
       {[
-        ["Currently Reading", "currently"],
-        ["Want To Read", "want"],
-        ["Read", "read"],
-        ["Favorites", "favorite"]
-      ].map(([label, key]) => (
+  ["Currently Reading", "currently"],
+  ["Revisiting", "revisiting"],
+  ["Want To Read", "want"],
+  ["Read", "read"],
+  ["Favorites", "favorite"]
+].map(([label, key]) => (
 
         <section key={key} className="ar-section">
 

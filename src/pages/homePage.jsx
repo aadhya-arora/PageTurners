@@ -87,7 +87,7 @@ export default function HomePage() {
           <li><Link to='/library'>Library</Link></li>
           <li><Link to="/discussions">Feed</Link></li>
           <li className="navbar__actions">
-            <Link to="/signup" className="navbar__join">Join Club</Link>
+            <Link to="/signup" className="navbar__join">Join Us</Link>
             <Link to="/profile" className="navbar__profile-link" aria-label="View profile">
               <svg viewBox="0 0 24 24" className="navbar__profile-icon" aria-hidden="true">
                 <circle cx="12" cy="8" r="4" />
@@ -256,7 +256,7 @@ export default function HomePage() {
         <div className="cta-band__deco">◈</div>
         <h2>Ready to find your next favourite book?</h2>
         <p>Join PageTurners and start reading with people who love stories as much as you do.</p>
-        <button className="btn btn--primary btn--large">Become a Member</button>
+        <Link to="/signup" className="btn btn--primary btn--large">Become a Member</Link>
       </section>
 
       {/* FOOTER */}

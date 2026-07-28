@@ -318,6 +318,91 @@
   font-size: 0.75rem;
 }
 
+/* ── Composer Modal ──────────────────────────────────────────── */
+
+.dc-page .dc-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(28, 18, 9, 0.55);
+  backdrop-filter: blur(2px);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 64px 24px;
+  overflow-y: auto;
+  z-index: 100;
+  animation: dc-fadeIn 0.25s ease;
+}
+
+.dc-page .dc-modal-box {
+  width: 100%;
+  max-width: 640px;
+  background: var(--soft-white);
+  border-radius: 8px;
+  box-shadow: var(--shadow-lg);
+  animation: dc-modalRise 0.35s var(--transition);
+}
+
+.dc-page .dc-modal-box__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 22px 28px;
+  border-bottom: 1px solid rgba(201, 185, 154, 0.5);
+}
+
+.dc-page .dc-modal-box__header h2 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.3rem;
+  color: var(--dark-brown);
+}
+
+.dc-page .dc-modal-box__close {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 1.1rem;
+  line-height: 1;
+  color: var(--brown);
+  padding: 6px;
+  border-radius: 50%;
+  transition: var(--transition);
+}
+.dc-page .dc-modal-box__close:hover {
+  background: rgba(122, 79, 58, 0.08);
+  color: var(--dark-brown);
+}
+
+.dc-page .dc-modal-box__body {
+  padding: 24px 28px 28px;
+  max-height: calc(100vh - 220px);
+  overflow-y: auto;
+}
+
+.dc-page .dc-modal-box .dc-composer {
+  border: none;
+  box-shadow: none;
+  padding: 0;
+  margin-bottom: 0;
+}
+
+@keyframes dc-fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes dc-modalRise {
+  from { opacity: 0; transform: translateY(24px) scale(0.98); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@media (max-width: 480px) {
+  .dc-page .dc-modal-overlay { padding: 24px 12px; }
+  .dc-page .dc-modal-box__header { padding: 18px 20px; }
+  .dc-page .dc-modal-box__body { padding: 18px 20px 24px; }
+}
+
 /* ── Composer ────────────────────────────────────────────────── */
 
 .dc-page .dc-composer {

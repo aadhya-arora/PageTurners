@@ -81,7 +81,6 @@ export default function SignUp() {
           <a href="/" className="su-panel__logo">◈ PageTurners</a>
 
           <div className="su-panel__quote">
-            <span className="su-panel__quote-mark">"</span>
             <p>Reading is the sole means by which we slip, involuntarily, often helplessly, into another's skin.</p>
             <cite>— Joyce Carol Oates</cite>
           </div>
