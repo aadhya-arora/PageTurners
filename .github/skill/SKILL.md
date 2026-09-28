@@ -1,18 +1,18 @@
 ---
-name: folio-page
+name: pageturners-page
 description: >
   Use this skill whenever you are building ANY new page, component, or UI section
-  for the Folio book club website. This includes signup pages, login pages, profile
+  for the Page Turners book club website. This includes signup pages, login pages, profile
   pages, book detail pages, discussion pages, member pages, archive pages, dashboards,
   or any other screen. Always read this skill before writing a single line of JSX or
-  CSS for Folio — it defines every rule: file structure, class naming, colors, fonts,
+  CSS for Page Turners — it defines every rule: file structure, class naming, colors, fonts,
   spacing, component patterns, and CSS scoping. Never guess at the design system; it's
   all here.
 ---
 
-# Folio — Page Creation Skill
+# Page Turners — Page Creation Skill
 
-You are building a page for **Folio**, a warm literary book club web app. Every page
+You are building a page for **Page Turners**, a warm literary book club web app. Every page
 must feel like a curated reading journal: editorial, intimate, and typographically rich.
 
 ---

@@ -175,7 +175,7 @@ export default function HomePage() {
             </div>
             <div className="featured__actions">
               <Link to="/discussions" className="btn btn--primary">Join Discussion</Link>
-              <button className="btn btn--outline">View Notes</button>
+              {/* <button className="btn btn--outline">View </button> */}
             </div>
           </div>
         </div>
