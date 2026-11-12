@@ -71,7 +71,7 @@ public class SecurityConfig {
                             response.setContentType(MediaType.APPLICATION_JSON_VALUE);
                             response.getWriter() .write("{\"message\":\"logged out\"}");
                         })));
-        
+
         return httpSecurity.build();
     }
 }
